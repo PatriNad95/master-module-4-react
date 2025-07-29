@@ -4,7 +4,11 @@ import { BoxLayout } from "@/layout";
 import { useNavigate } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 import { switchRoutes } from "@/router/routes";
-import { ListRickMortyForm, MemberTable } from "../components";
+import {
+  ListRickMortyForm,
+  MemberTable,
+  MemberTableWithPagination,
+} from "../components";
 import { TablePagination } from "@mui/material";
 import { Member } from "../list.vm";
 
@@ -29,7 +33,7 @@ export const ListRickMortyContainer: React.FC<Props> = (props) => {
     navigate(switchRoutes.root);
   };
 
-  const fetchData = async (url: string, newPage: number) => {
+  const searchData = async (url: string, newPage: number) => {
     try {
       const response = await getCharacters(url);
       setCharacters(response.results);
@@ -45,18 +49,17 @@ export const ListRickMortyContainer: React.FC<Props> = (props) => {
     }
   };
 
-  // Reset to page 0 when filter changes
   React.useEffect(() => {
     const url =
       debouncedFilter !== "" ? `${baseUrl}/?name=${debouncedFilter}` : baseUrl;
-    fetchData(url, 0);
+    searchData(url, 0);
   }, [debouncedFilter]);
 
   const handleChangePage = (_: unknown, newPage: number) => {
     if (newPage > page && nextUrl) {
-      fetchData(nextUrl, newPage);
+      searchData(nextUrl, newPage);
     } else if (newPage < page && prevUrl) {
-      fetchData(prevUrl, newPage);
+      searchData(prevUrl, newPage);
     }
   };
 
@@ -69,14 +72,13 @@ export const ListRickMortyContainer: React.FC<Props> = (props) => {
           goBack={goBack}
         />
       </BoxLayout>
-      <MemberTable members={characters} onSelect={onSelect} />
-      <TablePagination
-        component="div"
+      <MemberTableWithPagination
+        members={characters}
+        onSelect={onSelect}
         count={count}
         page={page}
-        onPageChange={handleChangePage}
         rowsPerPage={20}
-        rowsPerPageOptions={[]}
+        onPageChange={handleChangePage}
       />
     </>
   );

@@ -6,41 +6,25 @@ import { Member } from "../list.vm";
 interface Props {
   members: Member[];
   onSelect: (login: string) => void;
+  count: number;
+  page: number;
+  rowsPerPage: number;
+  onPageChange: (event: unknown, newPage: number) => void;
 }
 
-export const MemberTableWithPagination: React.FC<Props> = ({
-  members,
-  onSelect,
-}) => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const handleChangePage = (_: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const paginated = members.slice(
-    page * rowsPerPage,
-    page * rowsPerPage + rowsPerPage
-  );
+export const MemberTableWithPagination: React.FC<Props> = (props) => {
+  const { members, onSelect, count, page, rowsPerPage, onPageChange } = props;
 
   return (
     <>
-      <MemberTable members={paginated} onSelect={onSelect} />
+      <MemberTable members={members} onSelect={onSelect} />
       <TablePagination
         component="div"
-        count={members.length}
+        count={count}
         page={page}
-        onPageChange={handleChangePage}
+        onPageChange={onPageChange}
         rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
+        rowsPerPageOptions={[]}
       />
     </>
   );
