@@ -5,7 +5,11 @@ export const mapMemberToVM = (data: am.MemberDetail): vm.MemberDetail => ({
   id: data.id.toString(),
   login: data.login,
   name: data.name,
-  company: data.company,
-  bio: data.bio,
   avatarUrl: data.avatar_url,
+});
+
+export const mapCharacterToVM = (data: am.Result): vm.MemberDetail => ({
+  id: data.id.toString(),
+  name: data.name,
+  avatarUrl: data.image,
 });

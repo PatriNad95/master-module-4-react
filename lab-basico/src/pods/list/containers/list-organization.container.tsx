@@ -24,6 +24,9 @@ export const ListContainer: React.FC<Props> = (props) => {
   const goBack = () => {
     navigate(switchRoutes.root);
   };
+  const setSelected = (member: Member) => {
+    onSelect(member.login);
+  };
 
   return (
     <>
@@ -31,7 +34,7 @@ export const ListContainer: React.FC<Props> = (props) => {
         <ListOrganizationForm org={org} setOrg={setOrg} goBack={goBack} />
       </BoxLayout>
 
-      <MemberTable members={members} onSelect={onSelect} />
+      <MemberTable members={members} onSelect={setSelected} />
     </>
   );
 };

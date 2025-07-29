@@ -31,3 +31,23 @@ export interface MemberDetail {
   created_at: string;
   updated_at: string;
 }
+
+export interface Result {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: BasicInfo;
+  location: BasicInfo;
+  image: string;
+  episode: string[];
+  url: string;
+  created: string;
+}
+
+export interface BasicInfo {
+  name: string;
+  url: string;
+}

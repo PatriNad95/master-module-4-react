@@ -1,8 +1,8 @@
 import React from "react";
-import { createDefaultMemberDetail, MemberDetail } from "./detail.vm";
-import { getMember } from "./api";
-import { mapMemberToVM } from "./detail.mapper";
-import { Detail } from "./detail.component";
+import { createDefaultMemberDetail, MemberDetail } from "../detail.vm";
+import { getMember } from "../api";
+import { mapMemberToVM } from "../detail.mapper";
+import { Detail } from "../detail.component";
 
 interface Props {
   id: string;

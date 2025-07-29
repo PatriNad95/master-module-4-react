@@ -15,9 +15,13 @@ interface Props {
 export const MemberTableWithPagination: React.FC<Props> = (props) => {
   const { members, onSelect, count, page, rowsPerPage, onPageChange } = props;
 
+  const setSelected = (member: Member) => {
+    onSelect(member.id);
+  };
+
   return (
     <>
-      <MemberTable members={members} onSelect={onSelect} />
+      <MemberTable members={members} onSelect={setSelected} />
       <TablePagination
         component="div"
         count={count}

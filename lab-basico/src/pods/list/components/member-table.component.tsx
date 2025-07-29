@@ -13,7 +13,7 @@ import { Member } from "../list.vm";
 
 interface Props {
   members: Member[];
-  onSelect: (login: string) => void;
+  onSelect: (member: Member) => void;
 }
 
 export const MemberTable: React.FC<Props> = (props) => {
@@ -41,7 +41,7 @@ export const MemberTable: React.FC<Props> = (props) => {
                   fontWeight: "bold",
                   cursor: "pointer",
                 }}
-                onClick={() => onSelect(member.login)}
+                onClick={() => onSelect(member)}
               >
                 {member.login}
               </TableCell>
