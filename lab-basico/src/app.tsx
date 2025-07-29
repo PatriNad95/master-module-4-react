@@ -5,10 +5,8 @@ import { ListModeProvider } from "./core/providers/listMode";
 
 export const App = () => {
   return (
-    <ListModeProvider>
-      <OrganizationProvider>
-        <AppRouter />
-      </OrganizationProvider>
-    </ListModeProvider>
+    <OrganizationProvider>
+      <AppRouter />
+    </OrganizationProvider>
   );
 };

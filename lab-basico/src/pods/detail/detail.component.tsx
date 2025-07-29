@@ -18,7 +18,7 @@ export const Detail: React.FC<Props> = (props) => {
       <p> login: {member.login}</p>
       <p> company: {member.company}</p>
       <p> bio: {member.bio}</p>
-      <Link to={routes.root}>Back to list page</Link>
+      <Link to={routes.list}>Back to list page</Link>
     </>
   );
 };

@@ -9,3 +9,14 @@ const mapMemberToVM = (data: am.Member): vm.Member => ({
   login: data.login,
   avatarUrl: data.avatar_url,
 });
+
+export const mapResultsToVM = (data: am.InfoRickMorty): vm.InfoRickMorty => ({
+  ...data,
+  results: data.results.map(mapResultToVm),
+});
+
+const mapResultToVm = (data: am.Result): vm.Member => ({
+  id: data.id.toString(),
+  login: data.name,
+  avatarUrl: data.image,
+});

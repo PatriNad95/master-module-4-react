@@ -8,15 +8,18 @@ import {
 import { ListScene, DetailScene } from "@/scenes";
 import { switchRoutes } from "./routes";
 import { HomeScene } from "@/scenes/home.scene";
+import { ListModeProvider } from "@/core/providers/listMode";
 
 export const AppRouter = () => {
   return (
     <Router>
-      <Routes>
-        <Route path={switchRoutes.root} element={<HomeScene />} />
-        <Route path={switchRoutes.list} element={<ListScene />} />
-        <Route path={switchRoutes.detail} element={<DetailScene />} />
-      </Routes>
+      <ListModeProvider>
+        <Routes>
+          <Route path={switchRoutes.root} element={<HomeScene />} />
+          <Route path={switchRoutes.list} element={<ListScene />} />
+          <Route path={switchRoutes.detail} element={<DetailScene />} />
+        </Routes>
+      </ListModeProvider>
     </Router>
   );
 };

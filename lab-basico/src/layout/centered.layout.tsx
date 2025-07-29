@@ -1,5 +1,22 @@
+import { Box, Container, Typography } from "@mui/material";
 import React, { PropsWithChildren } from "react";
 
-export const CenteredLayout: React.FC<PropsWithChildren> = ({ children }) => {
-  return <div className="layout-center">{children}</div>;
+interface CenteredLayoutProps {
+  title: string;
+}
+
+export const CenteredLayout: React.FC<
+  PropsWithChildren<CenteredLayoutProps>
+> = (props) => {
+  const { title, children } = props;
+  return (
+    <Container maxWidth="sm">
+      <Box sx={{ mt: 8 }}>
+        <Typography variant="h4" gutterBottom>
+          {title}
+        </Typography>
+        {children}
+      </Box>
+    </Container>
+  );
 };
