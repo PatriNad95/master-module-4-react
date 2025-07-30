@@ -11,6 +11,7 @@ import {
 } from "../components";
 import { TablePagination } from "@mui/material";
 import { Member } from "../list.vm";
+import { CharacterContext } from "@/core/providers";
 
 interface Props {
   onSelect: (login: string) => void;
@@ -18,9 +19,10 @@ interface Props {
 
 export const ListRickMortyContainer: React.FC<Props> = (props) => {
   const { onSelect } = props;
+
   const navigate = useNavigate();
-  const [filter, setFilter] = React.useState("");
-  const [debouncedFilter] = useDebounce(filter, 500);
+  const { name, setName } = React.useContext(CharacterContext);
+  const [debouncedFilter] = useDebounce(name, 500);
   const [characters, setCharacters] = React.useState<Member[]>([]);
   const [count, setCount] = React.useState(0);
   const [page, setPage] = React.useState(0);
@@ -30,6 +32,7 @@ export const ListRickMortyContainer: React.FC<Props> = (props) => {
   const baseUrl = "https://rickandmortyapi.com/api/character";
 
   const goBack = () => {
+    setName("");
     navigate(switchRoutes.root);
   };
 
@@ -66,11 +69,7 @@ export const ListRickMortyContainer: React.FC<Props> = (props) => {
   return (
     <>
       <BoxLayout title="personaje">
-        <ListRickMortyForm
-          filter={filter}
-          setFilter={setFilter}
-          goBack={goBack}
-        />
+        <ListRickMortyForm filter={name} setFilter={setName} goBack={goBack} />
       </BoxLayout>
       <MemberTableWithPagination
         members={characters}

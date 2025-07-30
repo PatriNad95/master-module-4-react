@@ -9,6 +9,7 @@ import { ListScene, DetailScene } from "@/scenes";
 import { switchRoutes } from "./routes";
 import { HomeScene } from "@/scenes/home.scene";
 import { ListModeProvider } from "@/core/providers/listMode";
+import { OrganizationProvider } from "@/core/providers";
 
 export const AppRouter = () => {
   return (

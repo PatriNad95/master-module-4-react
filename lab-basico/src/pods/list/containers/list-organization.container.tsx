@@ -22,6 +22,7 @@ export const ListContainer: React.FC<Props> = (props) => {
   }, [org]);
 
   const goBack = () => {
+    setOrg("lemoncode");
     navigate(switchRoutes.root);
   };
   const setSelected = (member: Member) => {
