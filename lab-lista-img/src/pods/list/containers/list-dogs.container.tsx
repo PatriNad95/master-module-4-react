@@ -4,17 +4,27 @@ import { PictureInfo } from "../list.vm";
 import { List } from "../list.component";
 
 const mockData: PictureInfo[] = [
-  { id: "romano", picUrl: "/img/romano.png", title: "Romano", selected: false },
   {
-    id: "egipcio",
-    picUrl: "/img/egipcio.png",
-    title: "Egipcio",
+    id: "dalmata",
+    picUrl: "/img/dalmata.png",
+    title: "Dálmata",
     selected: false,
   },
-  { id: "persa", picUrl: "/img/persa.png", title: "Persa", selected: false },
+  {
+    id: "pastor",
+    picUrl: "/img/pastor-aleman.png",
+    title: "Pastor Alemán",
+    selected: false,
+  },
+  {
+    id: "chihuahua",
+    picUrl: "/img/chihuahua.png",
+    title: "Chihuahua",
+    selected: false,
+  },
 ];
 
-export const ListCatsContainer: React.FC = () => {
+export const ListDogsContainer: React.FC = () => {
   const { selectedIds, toggleId, isSelected } = React.useContext(CartContext);
   const [pictures, setPictures] = React.useState<PictureInfo[]>([]);
 

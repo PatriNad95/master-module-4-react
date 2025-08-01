@@ -10,6 +10,9 @@ interface Props {
 export const Cart: React.FC<Props> = (props) => {
   const { selectedIds, removeId } = props;
 
+  const capitalizeFirstLetter = (text: string): string =>
+    text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+
   return (
     <div
       style={{ width: 250, padding: 16, position: "fixed", right: 0, top: 0 }}
@@ -25,7 +28,7 @@ export const Cart: React.FC<Props> = (props) => {
               </IconButton>
             }
           >
-            {id}
+            {capitalizeFirstLetter(id)}
           </ListItem>
         ))}
       </List>
